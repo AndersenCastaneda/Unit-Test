@@ -1,0 +1,15 @@
+{
+    "name": "UISystems",
+    "references": [
+        "GUID:b86a7f3e8ac9ac64fb6442a6a8946ff1"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
