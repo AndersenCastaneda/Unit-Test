@@ -17,6 +17,10 @@ namespace TestUnity.UISystems
         [SerializeField] private IntRefference maxHealth;
 #endif
 
+        private void Awake() => InitComponent();
+
+        private void Update() => UpdateInfo();
+
         public void InitComponent()
         {
             if (slider == null)
@@ -28,9 +32,5 @@ namespace TestUnity.UISystems
         }
 
         public void UpdateInfo() => slider.value = health.value;
-
-        private void Awake() => InitComponent();
-
-        private void Update() => UpdateInfo();
     }
 }

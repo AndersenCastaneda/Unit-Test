@@ -14,17 +14,16 @@ namespace Tests
         private readonly IntRefference health = ScriptableObject.CreateInstance<IntRefference>();
         private readonly IntRefference maxHealth = ScriptableObject.CreateInstance<IntRefference>();
         private readonly GameObject go = new GameObject();
-        private Slider slider;
         private UIHealth uiHealthSystem;
+        private Slider slider;
 
         [SetUp]
         public void SetTests()
         {
-            health.value = 100;
-            maxHealth.value = 100;
 
             if (slider == null)
             {
+                maxHealth.value = 100;
                 slider = go.AddComponent<Slider>();
                 uiHealthSystem = go.AddComponent<UIHealth>();
                 uiHealthSystem.health = health;
@@ -33,14 +32,22 @@ namespace Tests
             }
         }
 
-        [Test]
-        public void _0_Test_UpdateInfo()
+        [TestCase(45, 100, 45)]
+        [TestCase(0, 20, 0)]
+        public void Test_UpdateInfo(int currentHealth, int sliderValue, int expected)
         {
-            health.value = 34;
+            // Arrange
+            health.value = currentHealth;
+            slider.value = sliderValue;
             uiHealthSystem.InitComponent();
+
+            // Act
             uiHealthSystem.UpdateInfo();
 
-            Assert.AreEqual(34, uiHealthSystem.slider.value);
+            //Assert
+            Assert.AreEqual(0, slider.minValue);
+            Assert.AreEqual(maxHealth.value, slider.maxValue);
+            Assert.AreEqual(expected, uiHealthSystem.slider.value);
         }
     }
 }
